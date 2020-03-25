@@ -13,7 +13,8 @@ variables:
   buildConfiguration: 'Release'
 
 steps:
-  #Enables unit testing via azure pipelines
+
+  #Enables unit testing via azure pipeline
 - task: DotNetCoreCLI@2
   inputs:
     command: test
@@ -24,13 +25,13 @@ steps:
   displayName: 'dotnet build $(buildConfiguration)'
 
 - task: DotNetCoreCLI@2
-  displayName: 'dotnet publish --configuration $(buildConfiguration) --output $(Build.ArtifactStagingDirectory)'
+  displayName: 'dotnet publish --configuration (buildConfiguration) --output $(Build.ArtifactStagingDirectory)'
   inputs:
     commands: publish
     #if it is not a web project set to false
     publishWebProjects: false
     projects: 'src/SimpleAPI/SimpleAPI.csproj'
-    arguments: '--configuration $(buildConfiguraion) --output $(Build.ArtifactStagingDirectory)'
+    arguments: '--configuration $(buildConfiguration) --output $(Build.ArtifactStagingDirectory)'
     zipAfterPublish: true
     
 - task: PublishBuildArtifacts@1
