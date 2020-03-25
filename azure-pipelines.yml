@@ -28,7 +28,7 @@ steps:
   displayName: 'dotnet publish --configuration (buildConfiguration) --output $(Build.ArtifactStagingDirectory)'
   inputs:
     commands: publish
-    #if it is not a web project set to false
+    #if it is not a web project, set to false
     publishWebProjects: false
     projects: 'src/SimpleAPI/SimpleAPI.csproj'
     arguments: '--configuration $(buildConfiguration) --output $(Build.ArtifactStagingDirectory)'
@@ -36,5 +36,9 @@ steps:
     
 - task: PublishBuildArtifacts@1
   displayName: 'publish artifacts'
+  inputs:
+    PathtoPublish: '$(Build.ArtifactStagingDirectory)'
+    ArtifactName: 'drop'
+    publishLocation: 'Container'
 
 
