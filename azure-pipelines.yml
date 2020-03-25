@@ -14,7 +14,7 @@ variables:
 
 steps:
 
-  #Enables unit testing via azure pipeline
+  #Enables unit testing via azure pipelines
 - task: DotNetCoreCLI@2
   inputs:
     command: test
